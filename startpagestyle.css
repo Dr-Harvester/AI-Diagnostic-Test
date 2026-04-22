@@ -1,38 +1,59 @@
+/* Background */
+
 div#background {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  color: white;
 }
 
 div#backdrop {
   background-color: rgb(217, 217, 217);
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0;
   height: 80vh;
   box-shadow: 0 20px 20px 15px rgb(160, 160, 160);
 }
 
-#title {
-  position: absolute;
-  top: 10vh;
-  left: 13vw;
-  color: rgb(82, 82, 82);
-  font-family: 'Angkor';
-  font-size: clamp(28px, 4vw, 50px);
-  cursor: default;
+
+/* HERO LAYOUT (NEW CENTER SYSTEM) */
+
+body {
+  margin: 0;
 }
 
+#hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-left: 10vw;
+  gap: 30px;
+}
+
+
+/* TITLE */
+
+#title {
+  color: rgb(82, 82, 82);
+  font-family: 'Angkor';
+  font-size: clamp(28px, 4vw, 60px);
+  margin: 0;
+}
+
+
+/* START BUTTON */
+
 #start {
-  position: absolute;
-  left: 13vw;
-  width: clamp(140px, 15vw, 260px);
+  width: clamp(160px, 15vw, 280px);
   height: clamp(60px, 10vh, 100px);
-  top: 40vh;
 
   background-color: rgb(242, 242, 242);
   box-shadow: 0 10px 15px rgb(160, 160, 160);
@@ -44,7 +65,7 @@ div#backdrop {
   font-size: clamp(16px, 2vw, 28px);
 
   cursor: pointer;
-  transition: background-color 0.15s, color 0.15s;
+  transition: 0.15s;
 }
 
 #start:hover,
@@ -53,43 +74,80 @@ div#backdrop {
   color: white;
 }
 
+
+/* LOADING SCREEN */
+
 #loadingContainer {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+
   background-color: rgb(217, 217, 217);
-  color: white;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 20px;
   z-index: 9999;
 }
 
+
+/* SPINNER */
+
 .spinner {
-  width: 100px;
-  height: 100px;
+  width: clamp(60px, 10vw, 100px);
+  height: clamp(60px, 10vw, 100px);
+
   border: 10px solid rgba(160, 160, 160, 0.3);
   border-top: 10px solid rgb(82, 82, 82);
   border-radius: 50%;
+
   animation: spin 1s linear infinite;
 }
+
+
+/* LOADING TEXT */
 
 #loadingContainer p {
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: 50px;
-  font-weight: bold;
+  font-size: clamp(20px, 4vw, 50px);
   margin: 0;
 }
 
+
+/* SPIN */
+
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+
+/* HIDDEN MAIN CONTENT */
 
 #loadingContainer {
   display: none;
+}
+
+
+/* 📱 MOBILE */
+
+@media (max-width: 768px) {
+
+  #hero {
+    align-items: center;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  #title {
+    font-size: 32px;
+  }
+
+  #start {
+    width: 70%;
+  }
 }
