@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Diagnostic Test</title>
+
+<link href="multiplechoicestyle.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+
+</head>
+<body>
+
+<div id="background"></div>
+<div id="backdrop"></div>
+<div id="questionbox"></div>
+
+<div class="question"
+     data-question-id="1"
+     data-question-reference="refA"
+     data-question-type="multiple-choice">
+
+  <p id="questionText"></p>
+
+  <button id="a" class="answer" onclick="choose('a')">
+    <p class="answerletter">A.</p>
+    <p id="answertextA"></p>
+  </button>
+
+  <button id="b" class="answer" onclick="choose('b')">
+    <p class="answerletter">B.</p>
+    <p id="answertextB"></p>
+  </button>
+
+  <button id="c" class="answer" onclick="choose('c')">
+    <p class="answerletter">C.</p>
+    <p id="answertextC"></p>
+  </button>
+
+  <button id="d" class="answer" onclick="choose('d')">
+    <p class="answerletter">D.</p>
+    <p id="answertextD"></p>
+  </button>
+
+</div>
+
+<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+
+<script>
+
+function choose(id) {
+
+  const options = ["a","b","c","d"];
+
+  options.forEach(option => {
+    document.getElementById(option).classList.remove("selected");
+  });
+
+  document.getElementById(id).classList.add("selected");
+
+  updateAnswer(
+    Number(sessionStorage.getItem("questionID")),
+    id
+  );
+}
+
+window.pageController = {
+
+  selectAnswer(answer) {
+
+    if (!answer) return;
+
+    const options = ["a","b","c","d"];
+
+    options.forEach(option => {
+      document.getElementById(option).classList.remove("selected");
+    });
+
+    document.getElementById(answer).classList.add("selected");
+  }
+
+};
+
+</script>
+
+</body>
+</html>

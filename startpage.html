@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>AI Diagnostic Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="startpagestyle.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+</head>
+
+<body>
+  <div id="background"></div>
+  <div id="backdrop"></div>
+  <h1 id="title">AI Diagnostic Test</h1>
+  <button class="pageLink" id="start">Start</button>
+
+  <div id="loadingContainer" style="display: none;">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('start').addEventListener('click', function () {
+      document.getElementById('loadingContainer').style.display = 'flex';
+      const [numberList, IDList, typeList] = randomize(1, 400);
+      setTimeout(() => {
+        if (typeList[0] === 1) {
+          loadPage("multiplechoice.html", 0);
+        } else if (typeList[0] === 2) {
+          loadPage("select.html", 0);
+        } else if (typeList[0] === 3) {
+          loadPage("onetofive.html", 0);
+        } else if (typeList[0] === 4) {
+          loadPage("yesno.html", 0);
+        } else if (typeList[0] === 5) {
+          loadPage("image.html", 0);
+        } else if (typeList[0] === 6) {
+          loadPage("interpretation.html", 0);
+        } else if (typeList[0] === 7) {
+          loadPage("openended.html", 0);
+        } else if (typeList[0] === 8) {
+          loadPage("rank.html", 0);
+        } else {
+          alert("Error.");
+        }
+      }, 5000);
+    });
+</script>
+</body>
+</html>

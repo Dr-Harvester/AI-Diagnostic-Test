@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <title>AI Diagnostic Test</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="resultstyle.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+    <link href="">
+
+  </head>
+
+  <body>
+    
+      <div id="loadingContainer">
+        <div id="loadingbackground"></div>
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+      <div id="mainContent">
+        <div id="background"></div>
+        <div id="backdrop"></div>
+        <div id="resultbox">
+          <h1 id="clarificationtext">Diagnosis:</h1>
+          <h1 id="diagnosis"></h1>
+        </div>
+        <div id="explanationbox">
+          <div id="outline"></div>
+          <div id="textbox"></div>
+        </div>
+      </div>
+
+      <script>
+        setTimeout(function () {
+          document.getElementById('loadingContainer').style.display = 'none';
+          document.getElementById('mainContent').style.display = 'block';
+        }, 5000);
+      </script>
+
+      <script src="script.js"></script>
+
+  </body>
+  
+</html>

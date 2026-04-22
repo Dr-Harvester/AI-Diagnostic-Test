@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Diagnostic Test</title>
+<link href="selectstyle.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+</head>
+<body>
+
+<div id="background"></div>
+<div id="backdrop"></div>
+<div id="questionbox"></div>
+
+<div class="question" data-question-id="201" data-question-reference="refD" data-question-type="select">
+  <p>Select all correct answers:</p>
+  <button id="a" class="answer" onclick="toggleAnswer('a')"><span class="circle"></span><p id="answertextA"></p></button>
+  <button id="b" class="answer" onclick="toggleAnswer('b')"><span class="circle"></span><p id="answertextB"></p></button>
+  <button id="c" class="answer" onclick="toggleAnswer('c')"><span class="circle"></span><p id="answertextC"></p></button>
+  <button id="d" class="answer" onclick="toggleAnswer('d')"><span class="circle"></span><p id="answertextD"></p></button>
+</div>
+
+<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+
+<script>
+
+  window.pageController = {
+    selectAnswer(answer) {
+      if (!answer) return;
+      if (answer.includes("a")) toggleAnswer('a');
+      if (answer.includes("b")) toggleAnswer('b');
+      if (answer.includes("c")) toggleAnswer('c');
+      if (answer.includes("d")) toggleAnswer('d');
+    }
+  };
+
+  function fullAnswer() {
+    let fullAnswer = "#";
+    const a = document.getElementById('a');
+    const b = document.getElementById('b');
+    const c = document.getElementById('c');
+    const d = document.getElementById('d');
+    const aActive = a.classList.contains('selected');
+    if (aActive) {
+      let letter = "a"
+      fullAnswer = fullAnswer + letter
+    }
+    const bActive = b.classList.contains('selected');
+    if (bActive) {
+      let letter = "b"
+      fullAnswer = fullAnswer + letter
+    }
+    const cActive = c.classList.contains('selected');
+    if (cActive) {
+      let letter = "c"
+      fullAnswer = fullAnswer + letter
+    }
+    const dActive = d.classList.contains('selected');
+    if (dActive) {
+      let letter = "d"
+      fullAnswer = fullAnswer + letter
+    }
+    updateAnswer(
+      Number(sessionStorage.getItem("questionID")),
+      fullAnswer
+    );
+  }
+
+  function toggleAnswer(id) {
+    const engageAnswer = document.getElementById(id);
+    engageAnswer.classList.toggle('selected');
+    fullAnswer();
+  }
+
+</script>
+
+</body>
+</html>

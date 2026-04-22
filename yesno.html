@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Diagnostic Test</title>
+
+<link href="yesnostyle.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+
+</head>
+<body>
+
+<div id="background"></div>
+<div id="backdrop"></div>
+<div id="questionbox"></div>
+
+<div class="question" data-question-id="3" data-question-reference="refB" data-question-type="yes-no">
+
+  <p id="questionText"></p>
+
+  <button id="yes" class="answer" onclick="choose('yes')">
+    YES
+  </button>
+
+  <button id="no" class="answer" onclick="choose('no')">
+    NO
+  </button>
+
+</div>
+
+<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+
+<script>
+
+function choose(id) {
+
+  const options = ["yes", "no"];
+
+  options.forEach(option => {
+    document.getElementById(option).classList.remove("selected");
+  });
+
+  document.getElementById(id).classList.add("selected");
+
+  updateAnswer(
+    Number(sessionStorage.getItem("questionID")),
+    id
+  );
+}
+
+window.pageController = {
+
+  selectAnswer(answer) {
+
+    if (!answer) return;
+
+    const options = ["yes", "no"];
+
+    options.forEach(option => {
+      document.getElementById(option).classList.remove("selected");
+    });
+
+    document.getElementById(answer).classList.add("selected");
+  }
+
+};
+
+</script>
+
+</body>
+</html>

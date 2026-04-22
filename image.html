@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Diagnostic Test</title>
+
+<link href="imagestyle.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+
+</head>
+<body>
+
+<div id="background"></div>
+<div id="backdrop"></div>
+<div id="questionbox"></div>
+
+<div class="question"
+     data-question-id="201"
+     data-question-reference="refF"
+     data-question-type="image">
+
+  <p>Choose the image that best represents your answer:</p>
+
+  <button id="imageone" class="answer" onclick="choose('imageone')">
+    <img src="Images/Other/abstract1.jpg" alt="Image 1" width="500" height="400">
+  </button>
+
+  <button id="imagetwo" class="answer" onclick="choose('imagetwo')">
+    <img src="Images/Other/abstract2.jpg" alt="Image 2" width="500" height="400">
+  </button>
+
+</div>
+
+<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+
+<script>
+
+function choose(id) {
+
+  const options = ["imageone", "imagetwo"];
+
+  options.forEach(option => {
+    document.getElementById(option).classList.remove("selected");
+  });
+
+  document.getElementById(id).classList.add("selected");
+
+  updateAnswer(
+    Number(sessionStorage.getItem("questionID")),
+    id
+  );
+}
+
+window.pageController = {
+
+  selectAnswer(answer) {
+
+    if (!answer) return;
+
+    const options = ["imageone", "imagetwo"];
+
+    options.forEach(option => {
+      document.getElementById(option).classList.remove("selected");
+    });
+
+    document.getElementById(answer).classList.add("selected");
+  }
+
+};
+
+</script>
+
+</body>
+</html>

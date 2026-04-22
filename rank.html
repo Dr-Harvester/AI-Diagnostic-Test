@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Diagnostic Test</title>
+<link href="rankstyle.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div id="background"></div>
+<div id="backdrop"></div>
+<div id="questionbox"></div>
+
+<div class="ranking-container" id="rankingList" data-question-id="201" data-question-reference="refC" data-question-type="rank">
+  <div class="rank-item" draggable="true" id="answer1"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext1">1</p></div>
+  <div class="rank-item" draggable="true" id="answer2"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext2">2</p></div>
+  <div class="rank-item" draggable="true" id="answer3"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext3">3</p></div>
+  <div class="rank-item" draggable="true" id="answer4"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext4">4</p></div>
+  <div class="rank-item" draggable="true" id="answer5"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext5">5</p></div>
+</div>
+
+<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+
+<script>
+  // This will run after the page HTML is loaded into #app
+  window.pageController = {
+    init() {
+      const container = document.getElementById('rankingList');
+      if (!container) return;
+
+      let draggingItem = null;
+
+      // Restore saved order
+      const savedOrder = retrieveAnswer(questionID); // should return an array
+      if (Array.isArray(savedOrder)) {
+        savedOrder.forEach(id => {
+          const item = container.querySelector(`#${id}`);
+          if (item) container.appendChild(item);
+        });
+      }
+
+      // Drag & Drop
+      container.addEventListener('dragover', e => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(container, e.clientY);
+        if (afterElement == null) container.appendChild(draggingItem);
+        else container.insertBefore(draggingItem, afterElement);
+      });
+
+      function getDragAfterElement(container, y) {
+        const elements = [...container.querySelectorAll('.rank-item:not(.dragging)')];
+        return elements.reduce((closest, child) => {
+          const box = child.getBoundingClientRect();
+          const offset = y - box.top - box.height / 2;
+          if (offset < 0 && offset > closest.offset) return { offset, element: child };
+          else return closest;
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+      }
+
+      document.querySelectorAll('.rank-item').forEach(item => {
+        item.addEventListener('dragstart', () => {
+          draggingItem = item;
+          item.classList.add('dragging');
+        });
+        item.addEventListener('dragend', () => {
+          draggingItem = null;
+          item.classList.remove('dragging');
+          saveRanking();
+        });
+      });
+
+      // Save function
+      function saveRanking() {
+        const ranked = [...container.children].map(el => el.id);
+        console.log("Saving rank order:", ranked);
+        updateAnswer(questionID, ranked);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

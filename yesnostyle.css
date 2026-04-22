@@ -1,0 +1,139 @@
+
+
+/* Background and directory */
+
+
+div#background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+div#backdrop {
+  background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 800px;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
+}
+
+#question {
+  position: absolute;
+  top: 90px;
+  margin-left: 320px;
+  color: rgb(82, 82, 82);
+  font-family: 'Change One';
+  font-size: 50px;
+  cursor: default;
+}
+
+.pageLink {
+  position: fixed;
+  width: 10vw;
+  height: 88px;
+  top: 900px;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
+  border-radius: 50px;
+  border-width: 0px;
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 1vw;
+  cursor: pointer;
+  transition: background-color 0.15s,
+    color 0.15s;
+}
+
+#next {
+  position: fixed;
+  left: 60vw;
+}
+
+#last {
+  position: fixed;
+  right: 60vw;
+}
+
+.pageLink:hover, .pageLink:active {
+  background-color: rgba(82, 82, 82, 0.4);
+  color: white;
+}
+
+
+/* Background and directory */
+
+
+
+/* Question elements */
+
+
+div#questionbox {
+  background-color: rgb(245, 245, 245);
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 50px;
+  left: 25%;
+  width: 50%;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.answer {
+  position: fixed;
+  top: 370px;
+  height: 400px;
+  width: 20vw;
+  background-color: rgb(245, 245, 245);
+  text-align: middle;
+  border-radius: 15px;
+  border: 4px solid transparent;
+  overflow: hidden;
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 6vw;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: border-color 0.15s, border-width 0.15s;
+}
+
+.answer:hover:not(.selected) {
+  border-color: rgb(200, 200, 200);
+  border-width: 10px;
+}
+
+.answer.selected {
+  border-color: rgb(82, 82, 82);
+  border-width: 10px;
+}
+
+.answerletter {
+  margin: 0;
+  font-weight: bold;
+}
+
+.answer p {
+  margin: 0;
+}
+
+#yes {
+  left: 27.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no {
+  right: 27.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
