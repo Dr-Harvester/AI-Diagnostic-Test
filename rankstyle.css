@@ -1,163 +1,105 @@
-/* Background */
-
+/* Background and directory */
 div#background {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  color: white;
 }
 
 div#backdrop {
   background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
   position: fixed;
-  inset: 0;
-  height: 80vh;
-  box-shadow: 0 20px 20px 15px rgb(160, 160, 160);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
 }
-
-
-/* Navigation */
 
 .pageLink {
   position: fixed;
-  width: clamp(120px, 10vw, 200px);
-  height: clamp(50px, 8vh, 90px);
-  top: 85vh;
-
+  width: 10vw;
+  height: 88px;
+  top: 900px;
   background-color: rgb(242, 242, 242);
-  box-shadow: 0 10px 15px rgb(160, 160, 160);
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
   border-radius: 50px;
-  border: none;
-
+  border-width: 0;
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: clamp(12px, 1vw, 18px);
-
+  font-size: 1vw;
   cursor: pointer;
-  transition: 0.15s;
+  transition: background-color 0.15s, color 0.15s;
 }
 
 #next { left: 60vw; }
 #last { right: 60vw; }
 
-.pageLink:hover,
-.pageLink:active {
+.pageLink:hover, .pageLink:active {
   background-color: rgba(82, 82, 82, 0.4);
   color: white;
 }
 
-
 /* Question box */
-
 div#questionbox {
   background-color: rgb(245, 245, 245);
   position: fixed;
-  top: 5vh;
+  top: 50px;
   left: 25%;
   width: 50%;
-  height: 30vh;
+  height: 300px;
   border-radius: 20px;
 }
 
-
-/* RANK CONTAINER (CENTERED + RESPONSIVE) */
-
+/* Ranking container */
 .ranking-container {
   position: fixed;
-  top: 38vh;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 50%;
+  width: 45vw;
+  left: 27.5%;
+  top: 370px;
+  background-color: transparent; /* invisible container */
   display: flex;
   flex-direction: column;
-  gap: 10px;
-
-  background-color: transparent;
+  gap: 8px; /* slightly smaller gap */
+  padding: 0;
 }
 
-
-/* RANK ITEMS */
-
+/* Individual rank items */
 .rank-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-
-  padding: 12px;
+  gap: 12px; /* slightly smaller gap inside items */
+  padding-left: 12px;
   background-color: rgb(245, 245, 245);
   border-radius: 12px;
-
-  font-family: 'Bowlby One SC';
-  font-size: clamp(16px, 2vw, 24px);
   color: rgb(82, 82, 82);
-
+  font-family: 'Bowlby One SC';
+  font-size: 24px; /* smaller font */
   cursor: grab;
   user-select: none;
-
   border: 2px solid transparent;
-  transition: 0.15s;
-
-  min-height: 60px;
+  max-height: 70px; /* smaller height */
+  transition: border-color 0.15s, border-width 0.15s;
 }
 
 .rank-item:hover:not(.selected) {
   border-color: rgb(200, 200, 200);
-  border-width: 6px;
+  border-width: 8px;
 }
 
-
-/* DRAG HANDLE */
-
+/* Drag handle */
 .drag-handle {
   width: 40px;
   height: 40px;
-
   border-radius: 50%;
   background-color: rgb(230, 230, 230);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 18px;
   color: rgb(82, 82, 82);
-
   flex-shrink: 0;
-}
-
-
-/* 📱 MOBILE */
-
-@media (max-width: 768px) {
-
-  div#questionbox {
-    left: 5%;
-    width: 90%;
-  }
-
-  .ranking-container {
-    width: 90%;
-    top: 35vh;
-  }
-
-  .rank-item {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  .drag-handle {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .pageLink {
-    width: 40%;
-    height: 60px;
-    font-size: 14px;
-  }
-
-  #next { left: 55%; }
-  #last { right: 55%; }
 }
