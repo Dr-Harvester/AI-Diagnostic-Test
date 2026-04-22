@@ -13,20 +13,24 @@
 </head>
 
 <body>
-  <div id="background"></div>
-  <div id="backdrop"></div>
-  <h1 id="title">AI Diagnostic Test</h1>
-  <button class="pageLink" id="start">Start</button>
-
-  <div id="loadingContainer" style="display: none;">
-    <div class="spinner"></div>
-    <p>Loading...</p>
+  <div id="mainContent">
+    <div id="background"></div>
+    <div id="backdrop"></div>
+    <h1 id="title">AI Diagnostic Test</h1>
+    <button class="pageLink" id="start">Start</button>
   </div>
+
+  <div id="loadingContainer">
+        <div id="loadingbackground"></div>
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
 
   <script src="script.js"></script>
   <script>
     document.getElementById('start').addEventListener('click', function () {
       document.getElementById('loadingContainer').style.display = 'flex';
+      document.getElementById('mainContent').style.display = 'none';
       const [numberList, IDList, typeList] = randomize(1, 400);
       setTimeout(() => {
         if (typeList[0] === 1) {
