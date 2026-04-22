@@ -1,9 +1,12 @@
-/* Background */
+
+
+/* Background and directory */
+
 
 div#background {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   color: white;
@@ -11,177 +14,167 @@ div#background {
 
 div#backdrop {
   background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  height: 80vh;
-  box-shadow: 0 20px 20px 15px rgb(160, 160, 160);
+  height: 800px;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
 }
-
-
-/* Question */
 
 #question {
   position: absolute;
-  top: 10vh;
-  left: 25%;
-  width: 50%;
-  text-align: center;
-
+  top: 90px;
+  margin-left: 320px;
   color: rgb(82, 82, 82);
-  font-family: 'Changa';
-  font-size: clamp(24px, 4vw, 50px);
+  font-family: 'Change One';
+  font-size: 50px;
+  cursor: default;
 }
-
-
-/* Navigation */
 
 .pageLink {
   position: fixed;
-  width: clamp(120px, 10vw, 200px);
-  height: clamp(50px, 8vh, 90px);
-  top: 85vh;
-
+  width: 10vw;
+  height: 88px;
+  top: 900px;
   background-color: rgb(242, 242, 242);
-  box-shadow: 0 10px 15px rgb(160, 160, 160);
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
   border-radius: 50px;
-  border: none;
-
+  border-width: 0px;
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: clamp(12px, 1vw, 18px);
-
+  font-size: 1vw;
   cursor: pointer;
-  transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s,
+    color 0.15s;
 }
 
-#next { left: 60vw; }
-#last { right: 60vw; }
+#next {
+  position: fixed;
+  left: 60vw;
+}
 
-.pageLink:hover,
-.pageLink:active {
+#last {
+  position: fixed;
+  right: 60vw;
+}
+
+.pageLink:hover, .pageLink:active {
   background-color: rgba(82, 82, 82, 0.4);
   color: white;
 }
 
 
-/* Question box */
+/* Background and directory */
+
+
+
+/* Question elements */
+
 
 div#questionbox {
   background-color: rgb(245, 245, 245);
+  background-repeat: no-repeat;
   position: fixed;
-  top: 5vh;
+  top: 50px;
   left: 25%;
   width: 50%;
-  height: 30vh;
+  height: 300px;
   border-radius: 20px;
 }
 
-
-/* SCALE CONTAINER (NEW) */
-
-#container {
-  position: fixed;
-  top: 45vh;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(10px, 3vw, 40px);
-}
-
-
-/* Circle buttons */
-
 .answer {
-  width: clamp(50px, 6vw, 90px);
-  height: clamp(50px, 6vw, 90px);
-
+  position: fixed;
+  width: 6vw;
+  height: 6vw;
   background-color: rgb(245, 245, 245);
   border-radius: 50%;
-
+  border: 0px solid rgb(245, 245, 245);
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 4vw;
+  cursor: pointer;
+  transition: border-color 0.15s, border-width 0.15s;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: rgb(82, 82, 82);
-  font-family: 'Bowlby One SC';
-  font-size: clamp(20px, 3vw, 40px);
-
-  cursor: pointer;
-  position: relative;
 }
 
-
-/* Inner ring */
-
 .answer .circle {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 6vw;
+  height: 6vw;
   border-radius: 50%;
-  border: clamp(2px, 0.3vw, 5px) solid rgb(82, 82, 82);
+  box-sizing: border-box;
+  border: 4px solid rgb(82, 82, 82);
+  border-width: 0.25vw;
   transition: border-color 0.15s, border-width 0.15s;
 }
 
 .answer:hover:not(.selected) .circle {
   border-color: rgb(200, 200, 200);
-  border-width: clamp(3px, 0.5vw, 7px);
+  border-width: 0.5vw;
 }
 
 .answer.selected .circle {
   border-color: rgb(82, 82, 82);
-  border-width: clamp(3px, 0.5vw, 7px);
+  border-width: 0.5vw;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 500px;
+  left: 50%;
 }
 
 
-/* Dash lines between circles */
+#one {
+  position: absolute;
+  right: 15vw;
+}
+
+#two {
+  position: absolute;
+  right: 6vw;
+}
+
+#three {
+  position: absolute;
+}
+
+#four {
+  position: absolute;
+  left: 6vw;
+}
+
+#five {
+  position: absolute;
+  left: 15vw;
+}
 
 .dash {
-  width: clamp(20px, 2vw, 40px);
-  height: clamp(4px, 0.5vw, 8px);
+  position: absolute;
+  width: 2vw;
+  height: 0.75vw;
   background-color: rgb(82, 82, 82);
 }
 
+#dashone {
+  right: 12.5vw;
+}
 
-/* 📱 MOBILE VERSION */
+#dashtwo {
+  right: 3.5vw;
+}
 
-@media (max-width: 768px) {
+#dashthree {
+  left: 3.5vw;
+}
 
-  #question {
-    left: 5%;
-    width: 90%;
-    font-size: clamp(20px, 6vw, 32px);
-  }
-
-  div#questionbox {
-    left: 5%;
-    width: 90%;
-    height: auto;
-    padding: 20px;
-  }
-
-  /* Stack vertically instead of horizontal */
-  #container {
-    flex-direction: column;
-    gap: 15px;
-    top: 35vh;
-  }
-
-  .dash {
-    width: 6px;
-    height: 25px;
-  }
-
-  .pageLink {
-    width: 40%;
-    height: 60px;
-    font-size: 14px;
-  }
-
-  #next { left: 55%; }
-  #last { right: 55%; }
+#dashfour {
+  left: 12.5vw;
 }
