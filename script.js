@@ -167,7 +167,7 @@ function lastQuestion(ID) {
   const listLength = sessionStorage.getItem("questionAmount");
   const typeList = sessionStorage.getItem("typeList") ? JSON.parse(sessionStorage.getItem("typeList")) : [];
 
-  if (ID === 0) {
+  if (ID === 1) {
     return alert("This is the first question.");
   } else {
 
