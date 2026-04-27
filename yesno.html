@@ -15,25 +15,26 @@
 <body>
 
 <div id="background"></div>
-<div id="backdrop"></div>
-<div id="questionbox"></div>
+<div id="backdrop">
+  <div id="questionbox"></div>
 
-<div class="question" data-question-id="3" data-question-reference="refB" data-question-type="yes-no">
+  <div class="question" data-question-id="3" data-question-reference="refB" data-question-type="yes-no">
 
-  <p id="questionText"></p>
+    <p id="questionText"></p>
 
-  <button id="yes" class="answer" onclick="choose('yes')">
-    YES
-  </button>
+    <button id="yes" class="answer" onclick="choose('yes')">
+      YES
+    </button>
 
-  <button id="no" class="answer" onclick="choose('no')">
-    NO
-  </button>
+    <button id="no" class="answer" onclick="choose('no')">
+      NO
+    </button>
 
+    <button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+    <button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
+  </div>
 </div>
 
-<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
-<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 
 <script>
 
