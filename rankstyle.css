@@ -1,8 +1,7 @@
-/* Background and directory */
 div#background {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   color: white;
@@ -11,19 +10,19 @@ div#background {
 div#backdrop {
   background-color: rgb(217, 217, 217);
   background-repeat: no-repeat;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  height: 800px;
+  height: 45vw;
   box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
 }
 
 .pageLink {
   position: fixed;
   width: 10vw;
-  height: 88px;
-  top: 900px;
+  height: 4vw;
+  top: 49vw;
   background-color: rgb(242, 242, 242);
   box-shadow: 0px 10px 15px rgb(160, 160, 160);
   border-radius: 50px;
@@ -35,71 +34,73 @@ div#backdrop {
   transition: background-color 0.15s, color 0.15s;
 }
 
-#next { left: 60vw; }
-#last { right: 60vw; }
+#next { 
+  position: absolute;
+  left: 60vw; 
+}
+#last { 
+  position: absolute;
+  right: 60vw; 
+}
 
 .pageLink:hover, .pageLink:active {
   background-color: rgba(82, 82, 82, 0.4);
   color: white;
 }
 
-/* Question box */
 div#questionbox {
   background-color: rgb(245, 245, 245);
-  position: fixed;
-  top: 50px;
+  position: absolute;
+  top: 2vw;
   left: 25%;
   width: 50%;
-  height: 300px;
+  height: 16vw;
   border-radius: 20px;
 }
 
-/* Ranking container */
 .ranking-container {
-  position: fixed;
+  position: absolute;
   width: 45vw;
   left: 27.5%;
-  top: 370px;
-  background-color: transparent; /* invisible container */
+  top: 19vw;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* slightly smaller gap */
+  gap: 0.5vw;
   padding: 0;
 }
 
-/* Individual rank items */
 .rank-item {
   display: flex;
   align-items: center;
-  gap: 12px; /* slightly smaller gap inside items */
-  padding-left: 12px;
+  gap: 1vw;
+  padding-left: 1vw;
   background-color: rgb(245, 245, 245);
   border-radius: 12px;
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: 24px; /* smaller font */
+  font-size: 2vw;
   cursor: grab;
   user-select: none;
   border: 2px solid transparent;
-  max-height: 70px; /* smaller height */
+  max-height: 4vw;
   transition: border-color 0.15s, border-width 0.15s;
 }
 
 .rank-item:hover:not(.selected) {
   border-color: rgb(200, 200, 200);
-  border-width: 8px;
+  border-width: 0.5vw;
 }
 
-/* Drag handle */
 .drag-handle {
-  width: 40px;
-  height: 40px;
+  width: 2vw;
+  height: 2vw;
   border-radius: 50%;
   background-color: rgb(230, 230, 230);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1vw;
   color: rgb(82, 82, 82);
   flex-shrink: 0;
 }
