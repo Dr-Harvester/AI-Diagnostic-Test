@@ -15,24 +15,26 @@
 <body>
 
 <div id="background"></div>
-<div id="backdrop"></div>
-<div id="questionbox"></div>
+<div id="backdrop">
+  <div id="questionbox"></div>
 
-<div class="answer"
-     data-question-id="601"
-     data-question-reference="refH"
-     data-question-type="open-ended">
+  <div class="answer"
+      data-question-id="601"
+      data-question-reference="refH"
+      data-question-type="open-ended">
 
-  <textarea
-    id="textAnswer"
-    placeholder="Type your answer here..."
-    oninput="saveTextAnswer()">
-  </textarea>
+    <textarea
+      id="textAnswer"
+      placeholder="Type your answer here..."
+      oninput="saveTextAnswer()">
+    </textarea>
 
+  </div>
+
+  <button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+  <button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 </div>
 
-<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
-<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 
 <script>
 
