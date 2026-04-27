@@ -24,14 +24,64 @@
       </div>
       <div id="mainContent">
         <div id="background"></div>
-        <div id="backdrop"></div>
-        <div id="resultbox">
-          <h1 id="clarificationtext">Diagnosis:</h1>
-          <h1 id="diagnosis"></h1>
+        <div id="backdrop">
+          <div id="resultbox">
+            <h1 id="clarificationtext">Diagnosis:</h1>
+            <h1 id="diagnosis"></h1>
+            <h1 id="description"></h1>
+          </div>
         </div>
         <div id="explanationbox">
-          <div id="outline"></div>
-          <div id="textbox"></div>
+          <div id="outline">
+            <div id="textbox"><h1 id="accuracy">How accurate is your result?</h1>
+            <div class="question" data-question-id="101" data-question-reference="refE" data-question-type="one-ten">
+
+              <div id="container">
+
+                <button id="one" class="answer" onclick="choose('one')">
+                  <span class="circle"></span> 1
+                </button>
+
+                <button id="two" class="answer" onclick="choose('two')">
+                  <span class="circle"></span> 2
+                </button>
+
+                <button id="three" class="answer" onclick="choose('three')">
+                  <span class="circle"></span> 3
+                </button>
+
+                <button id="four" class="answer" onclick="choose('four')">
+                  <span class="circle"></span> 4
+                </button>
+
+                <button id="five" class="answer" onclick="choose('five')">
+                  <span class="circle"></span> 5
+                </button>
+
+                <button id="six" class="answer" onclick="choose('six')">
+                  <span class="circle"></span> 6
+                </button>
+
+                <button id="seven" class="answer" onclick="choose('seven')">
+                  <span class="circle"></span> 7
+                </button>
+
+                <button id="eight" class="answer" onclick="choose('eight')">
+                  <span class="circle"></span> 8
+                </button>
+
+                <button id="nine" class="answer" onclick="choose('nine')">
+                  <span class="circle"></span> 9
+                </button>
+
+                <button id="ten" class="answer" onclick="choose('ten')">
+                  <span class="circle"></span> 10
+                </button>
+
+              </div>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -40,6 +90,39 @@
           document.getElementById('loadingContainer').style.display = 'none';
           document.getElementById('mainContent').style.display = 'block';
         }, 5000);
+
+        function choose(id) {
+
+          const options = ["one","two","three","four","five", "six", "seven", "eight", "nine", "ten"];
+
+          options.forEach(option => {
+            document.getElementById(option).classList.remove("selected");
+          });
+
+          document.getElementById(id).classList.add("selected");
+
+          updateAnswer(
+            Number(sessionStorage.getItem("questionID")),
+            id
+          );
+        }
+
+        window.pageController = {
+
+          selectAnswer(answer) {
+
+            if (!answer) return;
+
+            const options = ["one","two","three","four","five", "six", "seven", "eight", "nine", "ten"];
+
+            options.forEach(option => {
+              document.getElementById(option).classList.remove("selected");
+            });
+
+            document.getElementById(answer).classList.add("selected");
+          }
+
+        };
       </script>
 
       <script src="script.js"></script>
