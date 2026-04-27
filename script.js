@@ -2,7 +2,7 @@ var questionID;
 
 if (!sessionStorage.getItem("answerArray")) {
   let answerArray = [];
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 31; i++) {
     answerArray.push(null);
   }
   sessionStorage.setItem("answerArray", JSON.stringify(answerArray));
@@ -124,7 +124,7 @@ function retrieveAnswer(questionID) {
 
   console.log("Retrieved:", answers[questionID - 1]);
 
-  return answers[questionID - 1] || null;
+  return answers[questionID - 1] ?? null;
 }
 
 function nextQuestion(ID) {
@@ -133,7 +133,7 @@ function nextQuestion(ID) {
   const typeList = sessionStorage.getItem("typeList") ? JSON.parse(sessionStorage.getItem("typeList")) : [];
 
   if (ID === listLength - 1) {
-    loadPage("result.html", ID)
+    loadPage("result.html", ID + 1)
     return;
   } else {
 
