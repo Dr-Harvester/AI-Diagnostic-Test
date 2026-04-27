@@ -12,22 +12,23 @@
 <body>
 
 <div id="background"></div>
-<div id="backdrop"></div>
-<div id="questionbox"></div>
+<div id="backdrop">
+  <div id="questionbox"></div>
 
-<div class="ranking-container" id="rankingList" data-question-id="201" data-question-reference="refC" data-question-type="rank">
-  <div class="rank-item" draggable="true" id="answer1"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext1">1</p></div>
-  <div class="rank-item" draggable="true" id="answer2"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext2">2</p></div>
-  <div class="rank-item" draggable="true" id="answer3"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext3">3</p></div>
-  <div class="rank-item" draggable="true" id="answer4"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext4">4</p></div>
-  <div class="rank-item" draggable="true" id="answer5"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext5">5</p></div>
+  <div class="ranking-container" id="rankingList" data-question-id="201" data-question-reference="refC" data-question-type="rank">
+    <div class="rank-item" draggable="true" id="answer1"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext1">1</p></div>
+    <div class="rank-item" draggable="true" id="answer2"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext2">2</p></div>
+    <div class="rank-item" draggable="true" id="answer3"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext3">3</p></div>
+    <div class="rank-item" draggable="true" id="answer4"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext4">4</p></div>
+    <div class="rank-item" draggable="true" id="answer5"><span class="drag-handle"><i class="fas fa-bars"></i></span><p id="answertext5">5</p></div>
+  </div>
+
+  <button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+  <button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 </div>
 
-<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
-<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 
 <script>
-  // This will run after the page HTML is loaded into #app
   window.pageController = {
     init() {
       const container = document.getElementById('rankingList');
@@ -35,8 +36,7 @@
 
       let draggingItem = null;
 
-      // Restore saved order
-      const savedOrder = retrieveAnswer(questionID); // should return an array
+      const savedOrder = retrieveAnswer(questionID);
       if (Array.isArray(savedOrder)) {
         savedOrder.forEach(id => {
           const item = container.querySelector(`#${id}`);
@@ -44,7 +44,6 @@
         });
       }
 
-      // Drag & Drop
       container.addEventListener('dragover', e => {
         e.preventDefault();
         const afterElement = getDragAfterElement(container, e.clientY);
@@ -74,7 +73,6 @@
         });
       });
 
-      // Save function
       function saveRanking() {
         const ranked = [...container.children].map(el => el.id);
         console.log("Saving rank order:", ranked);
