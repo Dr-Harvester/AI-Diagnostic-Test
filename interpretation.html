@@ -15,31 +15,33 @@
 <body>
 
 <div id="background"></div>
-<div id="backdrop"></div>
-<div id="questionbox"></div>
+<div id="backdrop">
+  <div id="questionbox"></div>
 
-<div class="image" id="interpretationimage">
-  <img src="Images/Interpretation/1.jpg"
-       alt="Interpretation Image"
-       width="500"
-       height="400">
+  <div class="image" id="interpretationimage">
+    <img src="Images/Interpretation/1.jpg"
+        alt="Interpretation Image"
+        width="500"
+        height="400">
+  </div>
+
+  <div class="answer"
+      data-question-id="501"
+      data-question-reference="refG"
+      data-question-type="interpretation">
+
+    <textarea
+      id="textAnswer"
+      placeholder="Type your description here..."
+      oninput="saveTextAnswer()">
+    </textarea>
+
+  </div>
+
+  <button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
+  <button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 </div>
 
-<div class="answer"
-     data-question-id="501"
-     data-question-reference="refG"
-     data-question-type="interpretation">
-
-  <textarea
-    id="textAnswer"
-    placeholder="Type your description here..."
-    oninput="saveTextAnswer()">
-  </textarea>
-
-</div>
-
-<button class="pageLink" id="last" onclick="lastQuestion(questionID)">Last Question</button>
-<button class="pageLink" id="next" onclick="nextQuestion(questionID)">Next Question</button>
 
 <script>
 
