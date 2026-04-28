@@ -1,0 +1,167 @@
+div#background {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+div#backdrop {
+  background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 45vw;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
+}
+
+#question {
+  position: absolute;
+  top: 5vw;
+  margin-left: 320px;
+  color: rgb(82, 82, 82);
+  font-family: 'Change One';
+  font-size: 50px;
+  cursor: default;
+}
+
+.pageLink {
+  position: fixed;
+  width: 10vw;
+  height: 4vw;
+  top: 49vw;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
+  border-radius: 50px;
+  border-width: 0px;
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 1vw;
+  cursor: pointer;
+  transition: background-color 0.15s,
+    color 0.15s;
+}
+
+#next {
+  position: absolute;
+  left: 60vw;
+}
+
+#last {
+  position: absolute;
+  right: 60vw;
+}
+
+.pageLink:hover, .pageLink:active {
+  background-color: rgba(82, 82, 82, 0.4);
+  color: white;
+}
+
+div#questionbox {
+  background-color: rgb(245, 245, 245);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2vw;
+  left: 25%;
+  width: 50%;
+  height: 16vw;
+  border-radius: 20px;
+}
+
+.answer {
+  position: absolute;
+  width: 6vw;
+  height: 6vw;
+  background-color: rgb(245, 245, 245);
+  border-radius: 50%;
+  border: 0px solid rgb(245, 245, 245);
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 4vw;
+  cursor: pointer;
+  transition: border-color 0.15s, border-width 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer .circle {
+  position: absolute;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 4px solid rgb(82, 82, 82);
+  border-width: 0.25vw;
+  transition: border-color 0.15s, border-width 0.15s;
+}
+
+.answer:hover:not(.selected) .circle {
+  border-color: rgb(200, 200, 200);
+  border-width: 0.5vw;
+}
+
+.answer.selected .circle {
+  border-color: rgb(82, 82, 82);
+  border-width: 0.5vw;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 28vw;
+  left: 50%;
+}
+
+
+#one {
+  position: absolute;
+  right: 15vw;
+}
+
+#two {
+  position: absolute;
+  right: 6vw;
+}
+
+#three {
+  position: absolute;
+}
+
+#four {
+  position: absolute;
+  left: 6vw;
+}
+
+#five {
+  position: absolute;
+  left: 15vw;
+}
+
+.dash {
+  position: absolute;
+  width: 2vw;
+  height: 0.75vw;
+  background-color: rgb(82, 82, 82);
+}
+
+#dashone {
+  right: 12.5vw;
+}
+
+#dashtwo {
+  right: 3.5vw;
+}
+
+#dashthree {
+  left: 3.5vw;
+}
+
+#dashfour {
+  left: 12.5vw;
+}
