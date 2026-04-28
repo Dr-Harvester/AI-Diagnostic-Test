@@ -1,0 +1,226 @@
+div#background {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+div#backdrop {
+  background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 70vw;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
+}
+
+div#resultbox {
+  background-color: rgb(245, 245, 245);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 5vw;
+  left: 5%;
+  width: 90%;
+  height: 60vw;
+  border-radius: 20px;
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
+  display: flex;
+  justify-content: center;
+}
+
+h1#clarificationtext {
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 5\vw;
+}
+
+.explanationbox {
+  width: 50%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 500px;
+  left: 25%;
+  position: relative;
+}
+
+div#outline {
+  background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 10vw;
+  left: 7.25%;
+  width: 85%;
+  height: 50vw;
+  border-radius: 20px;
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
+}
+
+div#textbox {
+  background-color: rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 5%;
+  left: 2.5%;
+  width: 95%;
+  height: 45vw;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+      margin: 0;
+}
+
+#loadingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(217, 217, 217);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 5vw;
+  height: 5vw;
+  border: 10px solid rgba(160, 160, 160, 0.3);
+  border-top: 10px solid rgb(82, 82, 82);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+#loadingContainer p {
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 3vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#mainContent {
+  display: none;
+}
+
+.answer {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  background-color: rgb(245, 245, 245);
+  border-radius: 50%;
+  border: 0px solid rgb(245, 245, 245);
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 5vw;
+  cursor: pointer;
+  transition: border-color 0.15s, border-width 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer .circle {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 4px solid rgb(82, 82, 82);
+  border-width: 0.75vw;
+  transition: border-color 0.15s, border-width 0.15s;
+}
+
+.answer:hover:not(.selected) .circle {
+  border-color: rgb(200, 200, 200);
+  border-width: 1.25vw;
+}
+
+.answer.selected .circle {
+  border-color: rgb(82, 82, 82);
+  border-width: 1.25vw;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  right: 50%;
+}
+
+#one {
+  position: absolute;
+  right: 20vw;
+}
+
+#two {
+  position: absolute;
+  right: 8vw;
+}
+
+#three {
+  position: absolute;
+}
+
+#four {
+  position: absolute;
+  left: 8vw;
+}
+
+#five {
+  position: absolute;
+  left: 20vw;
+}
+
+#six {
+  position: absolute;
+  right: 20vw;
+  top: 8vw;
+}
+
+#seven {
+  position: absolute;
+  right: 8vw;
+  top: 8vw;
+}
+
+#eight {
+  position: absolute;
+  top: 8vw;
+}
+
+#nine {
+  position: absolute;
+  left: 8vw;
+  top: 8vw;
+}
+
+#ten {
+  position: absolute;
+  left: 20vw;
+  top: 8vw;
+}
+
+h1#accuracy {
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 4\vw;
+}
