@@ -6,7 +6,8 @@
   <title>AI Diagnostic Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="startpagestyle.css" rel="stylesheet">
+  <link href="startdesktop.css" rel="stylesheet" media="(min-width: 769px)">
+  <link href="startmobile.css" rel="stylesheet" media="(max-width: 768px)">
   <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
@@ -35,7 +36,7 @@
       const [numberList, IDList, typeList] = randomize(1, 400);
       setTimeout(() => {
         if (typeList[1] === 1) {
-          loadPage("multiplechoice.html", 1);
+          loadPage("multiple.html", 1);
         } else if (typeList[1] === 2) {
           loadPage("select.html", 1);
         } else if (typeList[1] === 3) {
