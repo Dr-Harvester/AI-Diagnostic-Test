@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Diagnostic Test</title>
-<link href="rankstyle.css" rel="stylesheet">
+<link href="rankdesktop.css" rel="stylesheet" media="(min-width: 769px)">
+<link href="rankmobile.css" rel="stylesheet" media="(max-width: 768px)">
 <link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -30,56 +31,102 @@
 
 <script>
   window.pageController = {
-    init() {
-      const container = document.getElementById('rankingList');
-      if (!container) return;
+  init() {
+    const container = document.getElementById('rankingList');
+    if (!container) return;
 
-      let draggingItem = null;
+    let draggingItem = null;
+    let selectedItem = null;
 
-      const savedOrder = retrieveAnswer(questionID);
-      if (Array.isArray(savedOrder)) {
-        savedOrder.forEach(id => {
-          const item = container.querySelector(`#${id}`);
-          if (item) container.appendChild(item);
-        });
-      }
+    function isSwapMode() {
+      return window.innerWidth < 768;
+    }
 
-      container.addEventListener('dragover', e => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(container, e.clientY);
-        if (afterElement == null) container.appendChild(draggingItem);
-        else container.insertBefore(draggingItem, afterElement);
-      });
-
-      function getDragAfterElement(container, y) {
-        const elements = [...container.querySelectorAll('.rank-item:not(.dragging)')];
-        return elements.reduce((closest, child) => {
-          const box = child.getBoundingClientRect();
-          const offset = y - box.top - box.height / 2;
-          if (offset < 0 && offset > closest.offset) return { offset, element: child };
-          else return closest;
-        }, { offset: Number.NEGATIVE_INFINITY }).element;
-      }
-
+    function updateDraggableState() {
       document.querySelectorAll('.rank-item').forEach(item => {
-        item.addEventListener('dragstart', () => {
-          draggingItem = item;
-          item.classList.add('dragging');
-        });
-        item.addEventListener('dragend', () => {
-          draggingItem = null;
-          item.classList.remove('dragging');
-          saveRanking();
-        });
+        item.draggable = !isSwapMode();
+      });
+    }
+
+    updateDraggableState();
+    window.addEventListener('resize', updateDraggableState);
+
+    const savedOrder = retrieveAnswer(questionID);
+    if (Array.isArray(savedOrder)) {
+      savedOrder.forEach(id => {
+        const item = container.querySelector(`#${id}`);
+        if (item) container.appendChild(item);
+      });
+    }
+
+    container.addEventListener('dragover', e => {
+      if (isSwapMode()) return;
+      e.preventDefault();
+      const afterElement = getDragAfterElement(container, e.clientY);
+      if (afterElement == null) container.appendChild(draggingItem);
+      else container.insertBefore(draggingItem, afterElement);
+    });
+
+    function getDragAfterElement(container, y) {
+      const elements = [...container.querySelectorAll('.rank-item:not(.dragging)')];
+      return elements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) return { offset, element: child };
+        else return closest;
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function swapItems(item1, item2) {
+      const parent = item1.parentNode;
+      const next1 = item1.nextSibling;
+      const next2 = item2.nextSibling;
+      parent.insertBefore(item1, next2);
+      parent.insertBefore(item2, next1);
+    }
+
+    document.querySelectorAll('.rank-item').forEach(item => {
+      item.addEventListener('dragstart', () => {
+        if (isSwapMode()) return;
+        draggingItem = item;
+        item.classList.add('dragging');
       });
 
-      function saveRanking() {
-        const ranked = [...container.children].map(el => el.id);
-        console.log("Saving rank order:", ranked);
-        updateAnswer(questionID, ranked);
-      }
+      item.addEventListener('dragend', () => {
+        if (isSwapMode()) return;
+        draggingItem = null;
+        item.classList.remove('dragging');
+        saveRanking();
+      });
+
+      item.addEventListener('click', () => {
+        if (!isSwapMode()) return;
+
+        if (!selectedItem) {
+          selectedItem = item;
+          item.classList.add('selected');
+          return;
+        }
+
+        if (selectedItem === item) {
+          selectedItem.classList.remove('selected');
+          selectedItem = null;
+          return;
+        }
+
+        swapItems(selectedItem, item);
+        selectedItem.classList.remove('selected');
+        selectedItem = null;
+        saveRanking();
+      });
+    });
+
+    function saveRanking() {
+      const ranked = [...container.children].map(el => el.id);
+      updateAnswer(questionID, ranked);
     }
   }
+};
 </script>
 
 </body>
