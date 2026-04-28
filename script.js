@@ -54,7 +54,7 @@ window.onload = function () {
     let questionID = Number(sessionStorage.getItem("questionID"));
     console.log(questionID)
     if (!savedPage) {
-        savedPage = "startpage.html";
+        savedPage = "start.html";
     }
     loadPage(savedPage, questionID);
 };
@@ -141,7 +141,7 @@ function nextQuestion(ID) {
     console.log(newID)
 
     if (typeList[newID] === 1) {
-      loadPage("multiplechoice.html", newID);
+      loadPage("multiple.html", newID);
     } else if (typeList[newID] === 2) {
       loadPage("select.html", newID);
     } else if (typeList[newID] === 3) {
@@ -175,7 +175,7 @@ function lastQuestion(ID) {
     console.log(newID)
 
     if (typeList[newID] === 1) {
-      loadPage("multiplechoice.html", newID);
+      loadPage("multiple.html", newID);
     } else if (typeList[newID] === 2) {
       loadPage("select.html", newID);
     } else if (typeList[newID] === 3) {
