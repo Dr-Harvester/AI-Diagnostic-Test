@@ -1,0 +1,156 @@
+div#background {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+div#backdrop {
+  background-color: rgb(217, 217, 217);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vw;
+  box-shadow: 0px 20px 20px 15px rgb(160, 160, 160);
+  display: flex;
+  justify-content: center;
+}
+
+#question {
+  position: absolute;
+  top: 5vw;
+  margin-left: 320px;
+  color: rgb(82, 82, 82);
+  font-family: 'Change One';
+  font-size: 50px;
+  cursor: default;
+}
+
+.pageLink {
+  position: fixed;
+  width: 30vw;
+  height: 12vw;
+  top: 110vw;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0px 10px 15px rgb(160, 160, 160);
+  border-radius: 50px;
+  border-width: 0px;
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 3vw;
+  cursor: pointer;
+  transition: background-color 0.15s,
+    color 0.15s;
+}
+
+#next {
+  position: absolute;
+  left: 60vw;
+}
+
+#last {
+  position: absolute;
+  right: 60vw;
+}
+
+.pageLink:hover, .pageLink:active {
+  background-color: rgba(82, 82, 82, 0.4);
+  color: white;
+}
+
+div#questionbox {
+  background-color: rgb(245, 245, 245);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2vw;
+  left: 5%;
+  width: 90%;
+  height: 40vw;
+  border-radius: 20px;
+}
+
+.answer, .image {
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  text-align: middle;
+  border-radius: 15px;
+  border: 4px solid transparent;
+  overflow: hidden;
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 1.5vw;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: border-color 0.15s, border-width 0.15s;
+}
+
+.answer {
+  top: 80vw;
+  height: 15vw;
+  width: 80vw;
+}
+
+.image {
+  top: 45vw;
+  height: 32.5vw;
+  width: 32.5vw;
+  font-size: 30px;
+}
+
+.answer:hover:not(.selected) {
+  border-color: rgb(200, 200, 200);
+  border-width: 1vw;
+}
+
+.answer.selected {
+  border-color: rgb(82, 82, 82);
+  border-width: 1vw;
+}
+
+.answerletter {
+  margin: 0;
+  font-weight: bold;
+}
+
+.answer p {
+  margin: 0;
+}
+
+.answer-container {
+  width: 45%;
+  height: 80px;
+  position: fixed;
+  left: 27.5%;
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  box-sizing: border-box;
+  font-size: 3vw;
+  font-family: 'Bowlby One SC', sans-serif;
+  color: rgb(82, 82, 82);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+textarea::placeholder {
+  color: rgb(82, 82, 82);
+  font-family: 'Bowlby One SC';
+  font-size: 3vw;
+}
