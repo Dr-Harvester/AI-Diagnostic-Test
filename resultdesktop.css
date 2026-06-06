@@ -35,7 +35,7 @@ div#resultbox {
 h1#clarificationtext {
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: 2\vw;
+  font-size: 2vw;
 }
 
 .explanationbox {
@@ -219,7 +219,7 @@ body {
 h1#accuracy {
   color: rgb(82, 82, 82);
   font-family: 'Bowlby One SC';
-  font-size: 2\vw;
+  font-size: 2vw;
 }
 
 html, body {
@@ -229,15 +229,15 @@ html, body {
 #diagnosistext {
   color: rgb(26, 26, 26);
   font-family: 'Bowlby One SC';
-  font-size: 3\vw;
+  font-size: clamp(1vw, 2vw, 3vw);
   position: absolute;
-  top: 2vw;
+  top: 2.5vw;
 }
 
 #description {
   color: rgb(82, 82, 82);
-  font-family: 'Bowlby One SC';
-  font-size: clamp(30px, 1vw, 36px);
+  font-family: 'Electrolize';
+  font-size: clamp(.5vw, 1.5vw, 1.75vw);
   overflow-wrap: break-word;
   word-break: break-word;
   white-space: normal;
