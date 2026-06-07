@@ -231,7 +231,13 @@ html, body {
   font-family: 'Bowlby One SC';
   font-size: clamp(1vw, 2vw, 3vw);
   position: absolute;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
   top: 2.5vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  text-align: center;
 }
 
 #description {
@@ -247,4 +253,5 @@ html, body {
   margin-left: 2vw;
   margin-right: 2vw;
   margin-bottom: 2vw;
+  margin-top: 2vw;
 }
