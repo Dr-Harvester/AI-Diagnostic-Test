@@ -145,12 +145,12 @@ function loadData(ID) {
     if (fourth) {fourth.innerHTML = questions[questionid]?.answers[3]};
     if (fifth) {fifth.innerHTML = questions[questionid]?.answers[4]};
     if (Imageone) {
-      const src = "/images/" + imageArray[ID].image1 + ".avif";
+      const src = imageArray[ID].image1 + ".avif";
       Imageone.src = src;
       console.log("Image 1:", src);
     }
     if (Imagetwo) {
-      const src = "/images/" + imageArray[ID].image2 + ".avif";
+      const src = imageArray[ID].image2 + ".avif";
       Imagetwo.src = src;
       console.log("Image 2:", src);
     }
