@@ -52,6 +52,7 @@ window.onload = function () {
     let IDList = sessionStorage.getItem("IDList");
     let typeList = sessionStorage.getItem("typeList");
     let savedPage = sessionStorage.getItem("currentPage");
+    imageArray = JSON.parse(sessionStorage.getItem("imageArray")) || [];
     console.log(savedPage)
     let questionID = Number(sessionStorage.getItem("questionID"));
     console.log(questionID)
@@ -66,6 +67,7 @@ let numberList = [];
 let IDList = [];
 let typeList = [];
 let answerArray = [];
+let imageArray = [];
 
 function randomize(min, max) {
   questionAmount = Math.floor(Math.random() * (30 - 20 + 1)) + 20;
@@ -96,11 +98,23 @@ function randomize(min, max) {
     }
     IDList.push(random);
   }
+  for (let i = 0; i <= questionAmount; i++) {
+    var random1 = Math.floor(Math.random() * 150) + 1;
+    var random2 = random1
+    while (random1 == random2) {
+      random2 = Math.floor(Math.random() * 150) + 1;
+    }
+    imageArray.push({
+      image1: random1,
+      image2: random2
+    });
+  }
   sessionStorage.setItem("diagnosisfinal", JSON.stringify(chosendiagnosis));
   sessionStorage.setItem("numberList", JSON.stringify(numberList));
   sessionStorage.setItem("IDList", JSON.stringify(IDList));
   sessionStorage.setItem("typeList", JSON.stringify(typeList));
   sessionStorage.setItem("questionAmount", JSON.stringify(questionAmount));
+  sessionStorage.setItem("imageArray", JSON.stringify(imageArray));
   return [numberList, IDList, typeList];
 }
 
@@ -131,12 +145,12 @@ function loadData(ID) {
     if (fourth) {fourth.innerHTML = questions[questionid]?.answers[3]};
     if (fifth) {fifth.innerHTML = questions[questionid]?.answers[4]};
     if (Imageone) {
-      const src = questions[questionid]?.answers[0];
+      const src = "/images/" + imageArray[ID].image1 + ".avif";
       Imageone.src = src;
       console.log("Image 1:", src);
     }
     if (Imagetwo) {
-      const src = questions[questionid]?.answers[1];
+      const src = "/images/" + imageArray[ID].image2 + ".avif";
       Imagetwo.src = src;
       console.log("Image 2:", src);
     }
